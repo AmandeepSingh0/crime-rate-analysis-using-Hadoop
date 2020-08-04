@@ -1,0 +1,11 @@
+#!/usr/bin/python
+import sys
+flag=0
+for input_line in sys.stdin:
+line = input_line.strip().split(",")
+ if (flag ==0):
+columns=line
+flag=1
+ else:
+disno = float(line[11])
+print "{0}\t{1}".format(disno,str(input_line.strip()))

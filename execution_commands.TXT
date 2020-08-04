@@ -1,0 +1,44 @@
+LOCAL EXECUTION:
+COMMANDS USED:
+cd Desktop/project
+cat crimedata_afterprep.txt | python time_map.py | python
+time_reduce.py
+
+cd Desktop/project
+cat crimedata_afterprep.txt | python district_map.py | python
+district_reduce.py
+
+cd Desktop/project
+cat crimedata_afterprep.txt | python location_map.py | python
+location_reduce.py
+
+HADOOP EXECUTION:
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming-2.6.0-
+cdh5.13.0.jar \
+-Dmapred.reduce.tasks=1 \
+-input /user/big12/crimedata_afterprep.txt \
+-file Desktop/project/district_map.py
+Desktop/project/district_reduce.py \
+-mapper "python time_map.py" \
+-reducer "python time_reduce.py" \
+-output /user/time_output/output
+
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming-2.6.0-
+cdh5.13.0.jar \
+-Dmapred.reduce.tasks=1 \
+-input /user/big12/crimedata_afterprep.txt \
+-file Desktop/project/district_map.py
+Desktop/project/district_reduce.py \
+-mapper "python district_map.py" \
+-reducer "python district_reduce.py" \
+-output /user/n6/output
+
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming-2.6.0-
+cdh5.13.0.jar \
+-Dmapred.reduce.tasks=1 \
+-input /user/big12/crimedata_afterprep.txt \
+-file Desktop/project/location_map.py
+Desktop/project/location_reduce.py \
+-mapper "python location_map.py" \
+-reducer "python location_reduce.py" \
+-output /user/n6/output

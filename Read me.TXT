@@ -1,0 +1,6 @@
+Data was collected from https://data.cityofchicago.org/PublicSafety/Crimes-2001-to-present/ijzp-q8t2(2017 Dataset Crime). 
+Data was pre-processed and cleaned to remove missing values and garbage values at various positions. Then, it was given as input to our
+code in mapper code. 
+The output from mapper was sent to reducer code and the corresponding results were printed. 
+The results were saved in a text file as the code was run in Hadoop. The part of code was then selected and pasted in excel file. 
+Corresponding graphs were created to display the results more beautifully.
